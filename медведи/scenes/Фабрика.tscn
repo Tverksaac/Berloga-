@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt8bmoq8pne6a"]
+
+[ext_resource type="Script" path="res://scenes/фабрика.gd" id="1_8ab3d"]
+[ext_resource type="Texture2D" uid="uid://cjmgespr30tk8" path="res://sprites/ForeshadowPNG/HoneyBFore.png" id="1_gms75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8lcv"]
+size = Vector2(20, 18)
+
+[node name="Фабрика" type="Area2D"]
+script = ExtResource("1_8ab3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_gms75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_a8lcv")
