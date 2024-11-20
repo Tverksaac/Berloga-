@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://c58v7ol21ks4f"]
 
 [ext_resource type="Script" path="res://scripts/nps.gd" id="1_6o1o3"]
-[ext_resource type="Texture2D" uid="uid://d3vk53fkfatb7" path="res://sprites/Barrel_Yellow.png" id="2_0wiuw"]
+[ext_resource type="Texture2D" uid="uid://4shms8433nx4" path="res://sprites/Barrel_Yellow.png" id="2_0wiuw"]
 [ext_resource type="Texture2D" uid="uid://cb3e5mnovffa7" path="res://sprites/new_atlas_texture.tres" id="3_hax24"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhkgu"]
@@ -57,7 +57,7 @@ size = Vector2(113, 44)
 size = Vector2(22, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2jr7"]
-size = Vector2(6, 0)
+size = Vector2(6, 1)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_6o1o3")
@@ -93,7 +93,7 @@ theme_override_font_sizes/font_size = 10
 text = "Нажмите F"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 31)
+position = Vector2(0, 30.5)
 shape = SubResource("RectangleShape2D_g2jr7")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -5,17 +5,12 @@ extends Node2D
 @onready var halls_node: Node2D = $"Ратуша"
 @onready var player: CharacterBody2D = $"../player"
 
-var fabrics_count = 0
+var fabrics_count
 var income : int = 0
 
 #await get_tree().create_timer(1).timeout
 func _ready():
-	
-	while PlayerVariables.is_income:
-		print(PlayerVariables.income)
-		await get_tree().create_timer(0.1).timeout
-		PlayerVariables.ChangeMoney(PlayerVariables.income / 10 * PlayerVariables.income_modifer)
-
+	pass
 
 func _process(_delta: float) -> void:
-	fabrics_count = fabrics_node.get_child_count()
+	pass

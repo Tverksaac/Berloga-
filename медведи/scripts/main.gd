@@ -1,6 +1,6 @@
 extends Node2D
 
-var BUILDINGS = {
+const BUILDINGS = {
 	"Ратуша": {
 		icon = preload("res://sprites/BuildingsPNG/Hall.png"),
 		foreshadow_icon = preload("res://sprites/ForeshadowPNG/HallFore.png"),
@@ -15,8 +15,6 @@ var BUILDINGS = {
 	}
 }
 
-
-@onready var label: Label = $player/Camera2D/Control/Panel/Label
 @onready var main: Node2D = $"."
 @onready var building_list: ItemList = $player/Camera2D/Control/BuildingList
 @onready var player: CharacterBody2D = $player
@@ -52,7 +50,6 @@ func _ready() -> void:
 			var building = scene.instantiate()
 			add_child(building)
 			current_building = building
-			building = null
 			placing_building = true
 			building_sprite  = current_building.get_node("Sprite2D")
 			building_name = building_list.get_item_text(buildNum)
@@ -64,37 +61,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	PlayerVariables.UpdateMoney(label)
-	
 	if placing_building and current_building:
 		var is_empty = current_building.get_overlapping_areas().is_empty()
 		var mouse_pos = get_global_mouse_position()
-		
-		var is_able_to_place = func ():
-			if is_empty and PlayerVariables.honey >= building_cost:
-				return true
-			else:
-				return false
-
-
 		current_building.position.x = mouse_pos.x
 		current_building.position.y = PLACE_POS
-
-
-		if is_able_to_place.call():
+		if is_empty:
 			building_sprite.texture = building_path.foreshadow_icon
 		else:
 			building_sprite.texture = building_path.foreshadowUN_icon
-
-		if Input.is_action_just_pressed("place_building") and is_able_to_place.call():
+			
+		if Input.is_action_just_pressed("place_building") and is_empty:
 			building_sprite.texture = building_path.icon
-			current_building.reparent(buildings_node.find_child(building_name))
-			building_path.cost *= 1.5
 			current_building = null
 			placing_building = false
-			building_list.deselect_all()
-			PlayerVariables.ChangeMoney(-building_cost)
-			
-		elif Input.is_action_just_pressed("place_building") and not is_able_to_place.call():
-			DeselectBuilding()
 			building_list.deselect_all()
