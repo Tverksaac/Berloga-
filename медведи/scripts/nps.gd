@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var anim = $AnimatedSprite2D
+
 var flag = false
 var flag2 = false
 
@@ -26,7 +27,10 @@ func _on_area_2d_2_body_exited(body: Node2D) -> void:
 		flag2 = false
 		
 func _process(_delta: float) -> void:
-	$Label.visible = flag
+	if flag:
+		$Label.show()
+	else:
+		$Label.hide()
 	if flag2:
 		$"../player/Camera2D/Control/BuildingList".show()
 	else:
