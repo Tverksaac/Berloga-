@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://c58v7ol21ks4f"]
+
+[ext_resource type="Script" path="res://scripts/nps.gd" id="1_6o1o3"]
+[ext_resource type="Texture2D" uid="uid://d3vk53fkfatb7" path="res://sprites/Barrel_Yellow.png" id="2_0wiuw"]
+[ext_resource type="Texture2D" uid="uid://cb3e5mnovffa7" path="res://sprites/new_atlas_texture.tres" id="3_hax24"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhkgu"]
+atlas = ExtResource("2_0wiuw")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_514ti"]
+atlas = ExtResource("2_0wiuw")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltd4m"]
+atlas = ExtResource("2_0wiuw")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guqop"]
+atlas = ExtResource("2_0wiuw")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4mnj"]
+atlas = ExtResource("2_0wiuw")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ly4nl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhkgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_514ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltd4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guqop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4mnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hax24")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4wy1"]
+size = Vector2(113, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uodux"]
+size = Vector2(22, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2jr7"]
+size = Vector2(6, 0)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_6o1o3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.500001, 18.875)
+scale = Vector2(0.382813, 0.341797)
+sprite_frames = SubResource("SpriteFrames_ly4nl")
+animation = &"idle"
+frame = 5
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_o4wy1")
+
+[node name="contact" type="Area2D" parent="."]
+position = Vector2(1, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="contact"]
+position = Vector2(0, 32.5)
+shape = SubResource("RectangleShape2D_uodux")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -8.0
+offset_right = 31.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 10
+text = "Нажмите F"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 31)
+shape = SubResource("RectangleShape2D_g2jr7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="contact" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="contact" to="." method="_on_area_2d_2_body_exited"]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://g3iaspjtwwj0"]
+[gd_scene load_steps=11 format=3 uid="uid://g3iaspjtwwj0"]
 
 [ext_resource type="PackedScene" uid="uid://0rq7sw7xpy3h" path="res://scenes/character_body_2d.tscn" id="1_18a8l"]
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_o25kx"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_o25kx"]
 [ext_resource type="Texture2D" uid="uid://bfhvd2p5ye1v8" path="res://sprites/BuildingsPNG/Hall.png" id="3_iky1m"]
-[ext_resource type="Script" path="res://scenes/building_list.gd" id="4_1md7y"]
+[ext_resource type="Script" path="res://scripts/building_list.gd" id="4_1md7y"]
 [ext_resource type="Texture2D" uid="uid://cms25lwtpvoi5" path="res://sprites/BuildingsPNG/HoneyB.png" id="4_gjlm0"]
 [ext_resource type="Texture2D" uid="uid://c1dsb2grbuppp" path="res://sprites/i.jpg" id="6_4tlkx"]
-[ext_resource type="Script" path="res://scenes/buildings.gd" id="8_fbkc7"]
+[ext_resource type="PackedScene" uid="uid://c58v7ol21ks4f" path="res://scenes/NPS.tscn" id="6_ndbcu"]
+[ext_resource type="Script" path="res://scripts/buildings.gd" id="8_fbkc7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r2tne"]
 line_spacing = 5.0
@@ -19,12 +20,16 @@ distance = -24.0
 [node name="main" type="Node2D"]
 script = ExtResource("1_o25kx")
 
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_ndbcu")]
+position = Vector2(-99, -32)
+
 [node name="player" parent="." instance=ExtResource("1_18a8l")]
 position = Vector2(23, -11)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(-24, 0)
 zoom = Vector2(2, 2)
+process_callback = 0
 
 [node name="Control" type="Control" parent="player/Camera2D"]
 layout_mode = 3
@@ -35,6 +40,7 @@ offset_right = -56.0
 offset_bottom = 159.0
 
 [node name="BuildingList" type="ItemList" parent="player/Camera2D/Control"]
+visible = false
 z_index = 10
 layout_mode = 1
 anchors_preset = -1
