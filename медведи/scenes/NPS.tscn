@@ -1,49 +1,52 @@
-[gd_scene load_steps=13 format=3 uid="uid://c58v7ol21ks4f"]
+[gd_scene load_steps=12 format=3 uid="uid://c2ro6cv1fa7ki"]
 
 [ext_resource type="Script" path="res://scripts/nps.gd" id="1_6o1o3"]
-[ext_resource type="Texture2D" uid="uid://4shms8433nx4" path="res://sprites/Barrel_Yellow.png" id="2_0wiuw"]
-[ext_resource type="Texture2D" uid="uid://cb3e5mnovffa7" path="res://sprites/new_atlas_texture.tres" id="3_hax24"]
+[ext_resource type="Texture2D" uid="uid://4shms8433nx4" path="res://sprites/Barrel_Yellow.png" id="2_0ru03"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mhkgu"]
-atlas = ExtResource("2_0wiuw")
-region = Rect2(0, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwx1s"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(0, 384, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_514ti"]
-atlas = ExtResource("2_0wiuw")
-region = Rect2(128, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h5pp"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(128, 384, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ltd4m"]
-atlas = ExtResource("2_0wiuw")
-region = Rect2(256, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_f02ix"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(256, 384, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_guqop"]
-atlas = ExtResource("2_0wiuw")
-region = Rect2(384, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tst3c"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(384, 384, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4mnj"]
-atlas = ExtResource("2_0wiuw")
-region = Rect2(512, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ugme"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(512, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcaes"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(640, 384, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ly4nl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mhkgu")
+"texture": SubResource("AtlasTexture_kwx1s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_514ti")
+"texture": SubResource("AtlasTexture_7h5pp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ltd4m")
+"texture": SubResource("AtlasTexture_f02ix")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_guqop")
+"texture": SubResource("AtlasTexture_tst3c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o4mnj")
+"texture": SubResource("AtlasTexture_2ugme")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_hax24")
+"texture": SubResource("AtlasTexture_pcaes")
 }],
 "loop": false,
 "name": &"idle",
@@ -54,10 +57,7 @@ animations = [{
 size = Vector2(113, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uodux"]
-size = Vector2(22, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2jr7"]
-size = Vector2(6, 1)
+size = Vector2(22, 23)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_6o1o3")
@@ -75,13 +75,15 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_o4wy1")
+debug_color = Color(0.659302, 0.501909, 0.326943, 0.42)
 
-[node name="contact" type="Area2D" parent="."]
+[node name="FlagShowArea" type="Area2D" parent="."]
 position = Vector2(1, -2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="contact"]
-position = Vector2(0, 32.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlagShowArea"]
+position = Vector2(0, 20.5)
 shape = SubResource("RectangleShape2D_uodux")
+debug_color = Color(0.235279, 0.626736, 0.338196, 0.42)
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -92,10 +94,7 @@ offset_bottom = 8.0
 theme_override_font_sizes/font_size = 10
 text = "Нажмите F"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 30.5)
-shape = SubResource("RectangleShape2D_g2jr7")
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="contact" to="." method="_on_area_2d_2_body_entered"]
-[connection signal="body_exited" from="contact" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="FlagShowArea" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="FlagShowArea" to="." method="_on_area_2d_2_body_exited"]

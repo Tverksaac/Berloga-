@@ -89,7 +89,7 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("place_building") and is_able_to_place.call():
 			building_sprite.texture = building_path.icon
 			current_building.reparent(buildings_node.find_child(building_name))
-			building_path.cost *= 1.5
+			building_path.cost *= 1.1
 			current_building = null
 			placing_building = false
 			building_list.deselect_all()
