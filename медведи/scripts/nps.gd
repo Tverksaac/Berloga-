@@ -7,8 +7,6 @@ var flag2 = false
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("ui_choise") and flag:
 		flag2 = true
 	
@@ -20,6 +18,8 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if body.name == 'player':
 		flag = true
 
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	anim.stop()
 
 func _on_area_2d_2_body_exited(body: Node2D) -> void:
 	if body.name == 'player':
