@@ -32,9 +32,9 @@ func _process(_delta: float) -> void:
 	else:
 		$Label.hide()
 	if flag2:
-		$"../player/Camera2D/Control/BuildingList".show()
+		$"../player/Camera2D/CanvasLayer/Control/BuildingList".show()
 	else:
-		$"../player/Camera2D/Control/BuildingList".hide()
+		$"../player/Camera2D/CanvasLayer/Control/BuildingList".hide()
 		
 		
 	

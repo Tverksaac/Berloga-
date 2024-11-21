@@ -15,10 +15,9 @@ var BUILDINGS = {
 	}
 }
 
-
-@onready var label: Label = $player/Camera2D/Control/Panel/Label
+@onready var label: Label = $player/Camera2D/CanvasLayer/Control/Panel/Label
 @onready var main: Node2D = $"."
-@onready var building_list: ItemList = $player/Camera2D/Control/BuildingList
+@onready var building_list: ItemList = $player/Camera2D/CanvasLayer/Control/BuildingList
 @onready var player: CharacterBody2D = $player
 @onready var buildings_node: Node2D = $buildings
 
@@ -98,3 +97,22 @@ func _process(_delta: float) -> void:
 		elif Input.is_action_just_pressed("place_building") and not is_able_to_place.call():
 			DeselectBuilding()
 			building_list.deselect_all()
+		 
+
+
+
+
+
+func _on_start_pressed() -> void:
+	get_tree().paused = false
+	$player/Camera2D/CanvasLayer/Control/pp.hide()	
+	
+
+
+func _on_pause_pressed() -> void:
+	get_tree().paused = true
+	$player/Camera2D/CanvasLayer/Control/pp.show()	
+
+
+func _on_quit_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
