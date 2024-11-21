@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="Медведи"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
 
 PlayerVariables="*res://scripts/PlayerVariables.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 
