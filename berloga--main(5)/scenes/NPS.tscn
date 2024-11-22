@@ -1,0 +1,145 @@
+[gd_scene load_steps=18 format=3 uid="uid://c2ro6cv1fa7ki"]
+
+[ext_resource type="Script" path="res://scripts/nps.gd" id="1_6o1o3"]
+[ext_resource type="Texture2D" uid="uid://4shms8433nx4" path="res://sprites/Barrel_Yellow.png" id="2_0ru03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb4rq"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwdmg"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f3nd"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhwpr"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t83bw"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ria41"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwx1s"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h5pp"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f02ix"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tst3c"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ugme"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(512, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcaes"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(640, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ly4nl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb4rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwdmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f3nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhwpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t83bw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ria41")
+}],
+"loop": false,
+"name": &"hiding",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwx1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h5pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f02ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tst3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ugme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcaes")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4wy1"]
+size = Vector2(113, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uodux"]
+size = Vector2(22, 23)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_6o1o3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.500001, 18.875)
+scale = Vector2(0.382813, 0.341797)
+sprite_frames = SubResource("SpriteFrames_ly4nl")
+animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_o4wy1")
+debug_color = Color(0.659302, 0.501909, 0.326943, 0.42)
+
+[node name="FlagShowArea" type="Area2D" parent="."]
+position = Vector2(1, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlagShowArea"]
+position = Vector2(0, 20.5)
+shape = SubResource("RectangleShape2D_uodux")
+debug_color = Color(0.235279, 0.626736, 0.338196, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -8.0
+offset_right = 31.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 10
+text = "Нажмите F"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="FlagShowArea" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="FlagShowArea" to="." method="_on_area_2d_2_body_exited"]
