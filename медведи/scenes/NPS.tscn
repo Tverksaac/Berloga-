@@ -1,7 +1,31 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2ro6cv1fa7ki"]
+[gd_scene load_steps=18 format=3 uid="uid://c2ro6cv1fa7ki"]
 
 [ext_resource type="Script" path="res://scripts/nps.gd" id="1_6o1o3"]
 [ext_resource type="Texture2D" uid="uid://4shms8433nx4" path="res://sprites/Barrel_Yellow.png" id="2_0ru03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb4rq"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwdmg"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f3nd"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhwpr"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t83bw"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ria41"]
+atlas = ExtResource("2_0ru03")
+region = Rect2(640, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kwx1s"]
 atlas = ExtResource("2_0ru03")
@@ -31,6 +55,29 @@ region = Rect2(640, 384, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pb4rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwdmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f3nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhwpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t83bw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ria41")
+}],
+"loop": false,
+"name": &"hiding",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kwx1s")
 }, {
 "duration": 1.0,
@@ -50,7 +97,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle",
-"speed": 7.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4wy1"]
@@ -67,10 +114,9 @@ position = Vector2(0.500001, 18.875)
 scale = Vector2(0.382813, 0.341797)
 sprite_frames = SubResource("SpriteFrames_ly4nl")
 animation = &"idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 8)
@@ -86,7 +132,6 @@ shape = SubResource("RectangleShape2D_uodux")
 debug_color = Color(0.235279, 0.626736, 0.338196, 0.42)
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -25.0
 offset_top = -8.0
 offset_right = 31.0

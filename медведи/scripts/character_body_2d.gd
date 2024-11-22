@@ -1,7 +1,6 @@
-extends CharacterBody2D
+extends "res://character_body_2d.gd"
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -300.0
+
 
 
 func _physics_process(delta: float) -> void:
