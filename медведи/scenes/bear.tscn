@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://u1iylm5m6vvb"]
+
+[ext_resource type="Texture2D" uid="uid://4shms8433nx4" path="res://sprites/Barrel_Yellow.png" id="1_2it4p"]
+[ext_resource type="Script" path="res://scenes/bear.gd" id="1_6w43i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgi1d"]
+atlas = ExtResource("1_2it4p")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kim2r"]
+atlas = ExtResource("1_2it4p")
+region = Rect2(128, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf2o6"]
+atlas = ExtResource("1_2it4p")
+region = Rect2(256, 512, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_278jy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgi1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kim2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf2o6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5312"]
+size = Vector2(21, 24.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6dgi"]
+radius = 4.0
+height = 8.0
+
+[node name="Bear" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_6w43i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.383, 0.383)
+sprite_frames = SubResource("SpriteFrames_278jy")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.257919
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_v5312")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_m6dgi")

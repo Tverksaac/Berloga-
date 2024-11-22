@@ -158,6 +158,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 10
 script = SubResource("GDScript_6tlc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
