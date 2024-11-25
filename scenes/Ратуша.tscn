@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://e5bordi1dum1"]
+
+[ext_resource type="Texture2D" uid="uid://bfhvd2p5ye1v8" path="res://sprites/BuildingsPNG/Hall.png" id="1_cjcuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s616w"]
+size = Vector2(28, 18)
+
+[node name="Ратуша" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_cjcuw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_s616w")
