@@ -162,8 +162,6 @@ z_index = 10
 script = SubResource("GDScript_6tlc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 0
-visibility_layer = 0
 shape = SubResource("CapsuleShape2D_8p4l8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
