@@ -22,7 +22,6 @@ var BUILDINGS = {
 @onready var building_list: ItemList = $player/Camera2D/CanvasLayer/Control/BuildingList
 @onready var player: CharacterBody2D = $player
 @onready var buildings_node: Node2D = $buildings
-@onready var pause: Panel = $player/Camera2D/CanvasLayer/Control/pp
 
 var placing_building = false
 var current_building : Area2D = null
@@ -106,3 +105,23 @@ func _process(_delta: float) -> void:
 		elif Input.is_action_just_pressed("place_building") and not is_able_to_place.call():
 			DeselectBuilding()
 			building_list.deselect_all()
+		
+		
+
+
+func _on_start_pressed() -> void:
+	Engine.time_scale = 1
+	get_tree().paused = false
+	$player/Camera2D/CanvasLayer/Control/pp.hide()	
+	
+
+
+func _on_pause_pressed() -> void:
+	Engine.time_scale = 0
+	get_tree().paused = true
+	$player/Camera2D/CanvasLayer/Control/pp.show()	
+
+
+func _on_quit_pressed() -> void:
+	var scene_to_load = load("res://scenes/menu.tscn")
+	get_tree().change_scene_to_packed(scene_to_load)

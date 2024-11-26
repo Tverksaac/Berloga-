@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://g3iaspjtwwj0"]
+[gd_scene load_steps=17 format=3 uid="uid://g3iaspjtwwj0"]
 
 [ext_resource type="PackedScene" uid="uid://0rq7sw7xpy3h" path="res://scenes/Player.tscn" id="1_18a8l"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_gasiq"]
-[ext_resource type="Script" path="res://scripts/node.gd" id="2_sqhii"]
 [ext_resource type="Theme" uid="uid://bc8eb3qygobtp" path="res://MainTheme.tres" id="3_emiom"]
 [ext_resource type="Texture2D" uid="uid://cms25lwtpvoi5" path="res://sprites/BuildingsPNG/HoneyB.png" id="4_gjlm0"]
 [ext_resource type="Script" path="res://scripts/building_list.gd" id="5_rsarq"]
@@ -12,9 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c2ro6cv1fa7ki" path="res://scenes/NPS.tscn" id="8_4q25c"]
 [ext_resource type="Script" path="res://scripts/buildings.gd" id="8_fbkc7"]
 [ext_resource type="PackedScene" uid="uid://cfn2j2ilnuwyt" path="res://scenes/cave.tscn" id="9_nhuiu"]
-[ext_resource type="PackedScene" uid="uid://s8fn0emcx3yw" path="res://scenes/Enemies/BugEnemy.tscn" id="12_oq2op"]
-[ext_resource type="Script" path="res://scenes/MainHallScript.gd" id="13_7brmw"]
-[ext_resource type="PackedScene" uid="uid://0dun0xxj50at" path="res://scenes/portal.tscn" id="15_akfn7"]
+[ext_resource type="Script" path="res://scripts/MainHallScript.gd" id="13_7brmw"]
+[ext_resource type="PackedScene" uid="uid://cisvgm32bgjrm" path="res://scenes/Enemies/portal.tscn" id="14_fq5wn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ww4x7"]
 line_spacing = 5.0
@@ -29,10 +27,6 @@ distance = -24.0
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_gasiq")
-
-[node name="Node" type="Node" parent="."]
-process_mode = 3
-script = ExtResource("2_sqhii")
 
 [node name="player" parent="." instance=ExtResource("1_18a8l")]
 position = Vector2(63, -10)
@@ -58,6 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_filter = 2
 theme = ExtResource("3_emiom")
 metadata/_edit_use_anchors_ = true
 
@@ -175,9 +170,6 @@ grow_vertical = 2
 text = "Выход
 "
 
-[node name="Ратуша" parent="player/Camera2D/CanvasLayer/Control/pp" instance=ExtResource("7_18n8v")]
-position = Vector2(-507.352, -302.416)
-
 [node name="Timer" type="Panel" parent="player/Camera2D/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -235,17 +227,14 @@ position = Vector2(-101, -29)
 [node name="cave" parent="." instance=ExtResource("9_nhuiu")]
 position = Vector2(115, 0)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("12_oq2op")]
-position = Vector2(-345, -162)
-
 [node name="Hall" parent="." instance=ExtResource("7_18n8v")]
-scale = Vector2(1.92, 1.92)
+scale = Vector2(2, 2)
 script = ExtResource("13_7brmw")
 
-[node name="portal" parent="." instance=ExtResource("15_akfn7")]
-position = Vector2(234, -1)
+[node name="Portal" parent="." instance=ExtResource("14_fq5wn")]
+position = Vector2(-180, 0)
 
-[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/Pause" to="Node" method="_on_pause_pressed"]
-[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/pp/Start" to="Node" method="_on_start_pressed"]
-[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/pp/Quit" to="Node" method="_on_quit_pressed"]
+[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/pp/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/pp/Quit" to="." method="_on_quit_pressed"]
 [connection signal="hall_just_atacked" from="Hall" to="Hall" method="_on_hall_just_atacked"]

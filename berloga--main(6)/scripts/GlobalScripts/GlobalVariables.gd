@@ -10,8 +10,7 @@ var unfreeze_cost = 50
 var free_fabrics = []
 var busy_fabrics = []
 
-var clearlvl1 = false
-var clearlvl2 = false
+
 
 func UnfreezeBear():
 	if PlayerVariables.honey < unfreeze_cost: return
@@ -25,6 +24,7 @@ func UnfreezeBear():
 		PlayerVariables.ChangeMoney(-unfreeze_cost)
 		unfreeze_cost += 25
 		print("новая цена:" + str(unfreeze_cost))
+
 
 func _process(delta: float) -> void:
 	PlayerVariables.income = busy_fabrics.size() * 10
