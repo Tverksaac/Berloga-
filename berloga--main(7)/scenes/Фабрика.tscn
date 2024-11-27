@@ -10,6 +10,7 @@ size = Vector2(20, 18)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_8ab3d")
+metadata/Fabric = ""
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -18,3 +19,5 @@ texture = ExtResource("1_gms75")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_a8lcv")
+
+[node name="Фабрика" type="Node2D" parent="."]

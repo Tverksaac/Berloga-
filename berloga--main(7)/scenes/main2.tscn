@@ -1,12 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://b77o4kekxyuct"]
+[gd_scene load_steps=21 format=3 uid="uid://b77o4kekxyuct"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_cvp02"]
 [ext_resource type="Script" path="res://scripts/node.gd" id="2_pephf"]
 [ext_resource type="PackedScene" uid="uid://0rq7sw7xpy3h" path="res://scenes/Player.tscn" id="3_2mlhv"]
 [ext_resource type="Theme" uid="uid://bc8eb3qygobtp" path="res://MainTheme.tres" id="4_cavcs"]
 [ext_resource type="Texture2D" uid="uid://cms25lwtpvoi5" path="res://sprites/BuildingsPNG/HoneyB.png" id="5_v3lnf"]
+[ext_resource type="Texture2D" uid="uid://dcq3wnrhly4kl" path="res://sprites/BuildingsPNG/HoneyGarden.png" id="6_dymlc"]
 [ext_resource type="Script" path="res://scripts/building_list.gd" id="6_kmkrd"]
 [ext_resource type="PackedScene" uid="uid://e5bordi1dum1" path="res://scenes/Ратуша.tscn" id="7_bfo0a"]
+[ext_resource type="Texture2D" uid="uid://8l313tclexx0" path="res://sprites/BuildingsPNG/Electro.png" id="7_cfei1"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="8_ymkq7"]
 [ext_resource type="Texture2D" uid="uid://c1dsb2grbuppp" path="res://sprites/i.jpg" id="9_pumph"]
 [ext_resource type="Script" path="res://scripts/buildings.gd" id="10_gg2al"]
@@ -76,11 +78,15 @@ offset_right = -116.544
 grow_vertical = 0
 allow_rmb_select = true
 auto_height = true
-item_count = 1
+item_count = 3
 max_columns = 2
 same_column_width = true
 item_0/text = "Фабрика 100"
 item_0/icon = ExtResource("5_v3lnf")
+item_1/text = "Сад 50"
+item_1/icon = ExtResource("6_dymlc")
+item_2/text = "Электростанция 175"
+item_2/icon = ExtResource("7_cfei1")
 script = ExtResource("6_kmkrd")
 metadata/_edit_use_anchors_ = true
 
@@ -176,9 +182,6 @@ grow_vertical = 2
 text = "Выход
 "
 
-[node name="Ратуша" parent="player/Camera2D/CanvasLayer/Control/pp" instance=ExtResource("7_bfo0a")]
-position = Vector2(-507.352, -302.416)
-
 [node name="Timer" type="Panel" parent="player/Camera2D/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -229,6 +232,10 @@ script = ExtResource("10_gg2al")
 [node name="Фабрика" type="Node2D" parent="buildings"]
 
 [node name="Building__" type="Node2D" parent="buildings"]
+
+[node name="Сад" type="Node2D" parent="buildings"]
+
+[node name="Электростанция" type="Node2D" parent="buildings"]
 
 [node name="npc" parent="." instance=ExtResource("11_gusmf")]
 position = Vector2(-101, -29)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://g3iaspjtwwj0"]
+[gd_scene load_steps=21 format=3 uid="uid://g3iaspjtwwj0"]
 
 [ext_resource type="PackedScene" uid="uid://0rq7sw7xpy3h" path="res://scenes/Player.tscn" id="1_18a8l"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_gasiq"]
@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cms25lwtpvoi5" path="res://sprites/BuildingsPNG/HoneyB.png" id="4_gjlm0"]
 [ext_resource type="Script" path="res://scripts/building_list.gd" id="5_rsarq"]
 [ext_resource type="Texture2D" uid="uid://c1dsb2grbuppp" path="res://sprites/i.jpg" id="6_4tlkx"]
+[ext_resource type="Texture2D" uid="uid://dcq3wnrhly4kl" path="res://sprites/BuildingsPNG/HoneyGarden.png" id="6_87kjm"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="6_q1o4o"]
 [ext_resource type="PackedScene" uid="uid://e5bordi1dum1" path="res://scenes/Ратуша.tscn" id="7_18n8v"]
+[ext_resource type="Texture2D" uid="uid://8l313tclexx0" path="res://sprites/BuildingsPNG/Electro.png" id="7_yxkm6"]
 [ext_resource type="PackedScene" uid="uid://c2ro6cv1fa7ki" path="res://scenes/NPS.tscn" id="8_4q25c"]
 [ext_resource type="Script" path="res://scripts/buildings.gd" id="8_fbkc7"]
 [ext_resource type="PackedScene" uid="uid://cfn2j2ilnuwyt" path="res://scenes/cave.tscn" id="9_nhuiu"]
@@ -76,11 +78,15 @@ offset_right = -116.544
 grow_vertical = 0
 allow_rmb_select = true
 auto_height = true
-item_count = 1
+item_count = 3
 max_columns = 2
 same_column_width = true
 item_0/text = "Фабрика 100"
 item_0/icon = ExtResource("4_gjlm0")
+item_1/text = "Сад 50"
+item_1/icon = ExtResource("6_87kjm")
+item_2/text = "Электростанция 175"
+item_2/icon = ExtResource("7_yxkm6")
 script = ExtResource("5_rsarq")
 metadata/_edit_use_anchors_ = true
 
@@ -226,6 +232,10 @@ script = ExtResource("8_fbkc7")
 [node name="Фабрика" type="Node2D" parent="buildings"]
 
 [node name="Building__" type="Node2D" parent="buildings"]
+
+[node name="Сад" type="Node2D" parent="buildings"]
+
+[node name="Электростанция" type="Node2D" parent="buildings"]
 
 [node name="npc" parent="." instance=ExtResource("8_4q25c")]
 position = Vector2(-101, -29)

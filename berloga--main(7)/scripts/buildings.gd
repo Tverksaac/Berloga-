@@ -13,7 +13,3 @@ func _ready():
 	while PlayerVariables.is_income:
 		await get_tree().create_timer(1).timeout
 		PlayerVariables.ChangeMoney(PlayerVariables.income * PlayerVariables.income_modifer)
-		
-
-func _process(_delta: float) -> void:
-	fabrics_count = fabrics_node.get_child_count()

@@ -1,10 +1,11 @@
 extends Node
 
-var honey = 200
+var honey = 100000
 var income = 0
-var lose = 0
 var is_income = true
 var income_modifer = 1
+
+var electro_income = 0
 
 var hall_health = 100
 

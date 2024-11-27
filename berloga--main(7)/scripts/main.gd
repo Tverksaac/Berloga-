@@ -14,6 +14,18 @@ var BUILDINGS = {
 		foreshadowUN_icon = preload("res://sprites/ForeshadowPNG/HoneyBForeUN.png"),
 		cost = 100,
 		description = "Медовая фабрика, на которой наши медведи будут пасти пчёл. Нужно быть осторожней, если фабрик будет слишком много, медведи могут взбунтоваться"
+	},
+	"Сад": {
+		icon = preload("res://sprites/BuildingsPNG/HoneyGarden.png"),
+		foreshadow_icon = preload("res://sprites/ForeshadowPNG/HoneyGardenFore.png"),
+		foreshadowUN_icon = preload("res://sprites/ForeshadowPNG/HoneyGardenForeUN.png"),
+		cost = 50
+	},
+	"Электростанция": {
+		icon = preload("res://sprites/BuildingsPNG/Electro.png"),
+		foreshadow_icon = preload("res://sprites/ForeshadowPNG/ElectroFore.png"),
+		foreshadowUN_icon =  preload("res://sprites/ForeshadowPNG/ElectroForeUN.png"),
+		cost = 175
 	}
 }
 
@@ -99,9 +111,10 @@ func _process(_delta: float) -> void:
 			placing_building = false
 			building_list.deselect_all()
 			PlayerVariables.ChangeMoney(-building_cost)
-			building_path.cost *= 1.5
-			print("Новая цена:" + str(int(building_cost * 1.5)))
-			building_list.set_item_text(building_num, building_name + " " + str(int(building_cost * 1.5)))
+			if building_name != "Электростанция":
+				building_path.cost *= 1.5
+				print("Новая цена:" + str(int(building_cost * 1.5)))
+				building_list.set_item_text(building_num, building_name + " " + str(int(building_cost * 1.5)))
 			
 		elif Input.is_action_just_pressed("place_building") and not is_able_to_place.call():
 			DeselectBuilding()

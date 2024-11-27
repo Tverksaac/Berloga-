@@ -1,0 +1,143 @@
+[gd_scene load_steps=21 format=3 uid="uid://r215yeqfumhs"]
+
+[ext_resource type="Script" path="res://electro_bear.gd" id="1_0ixmh"]
+[ext_resource type="Texture2D" uid="uid://dfr2iflvs0usg" path="res://sprites/idle.png" id="2_1iydr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qabba"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hjbt"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4drew"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji0l2"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(0, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcwok"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61dph"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(80, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lgeu"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(160, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hcyb"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(240, 80, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78v2i"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(0, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u48q"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(80, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6tvj"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(160, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbn41"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(240, 160, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfjh5"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(80, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmxc6"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(160, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmj7f"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(240, 240, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riojc"]
+atlas = ExtResource("2_1iydr")
+region = Rect2(0, 240, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xoeib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qabba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hjbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4drew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji0l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcwok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61dph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lgeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hcyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78v2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u48q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6tvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbn41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfjh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmxc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmj7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riojc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxmq3"]
+
+[node name="ElectroBear" type="CharacterBody2D"]
+z_index = 9
+script = ExtResource("1_0ixmh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -7)
+sprite_frames = SubResource("SpriteFrames_xoeib")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.651824
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_mxmq3")
