@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cisvgm32bgjrm"]
-
-[ext_resource type="Script" path="res://scripts/EnemyScripts/portal.gd" id="1_q8284"]
-[ext_resource type="Texture2D" uid="uid://dakcaxbibc72f" path="res://sprites/Enemies/Portal.png" id="1_te62x"]
-
-[node name="Portal" type="Sprite2D"]
-position = Vector2(0, -14)
-texture = ExtResource("1_te62x")
-script = ExtResource("1_q8284")
