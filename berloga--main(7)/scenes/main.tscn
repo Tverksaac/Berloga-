@@ -1,0 +1,249 @@
+[gd_scene load_steps=19 format=3 uid="uid://g3iaspjtwwj0"]
+
+[ext_resource type="PackedScene" uid="uid://0rq7sw7xpy3h" path="res://scenes/Player.tscn" id="1_18a8l"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_gasiq"]
+[ext_resource type="Script" path="res://scripts/node.gd" id="2_sqhii"]
+[ext_resource type="Theme" uid="uid://bc8eb3qygobtp" path="res://MainTheme.tres" id="3_emiom"]
+[ext_resource type="Texture2D" uid="uid://cms25lwtpvoi5" path="res://sprites/BuildingsPNG/HoneyB.png" id="4_gjlm0"]
+[ext_resource type="Script" path="res://scripts/building_list.gd" id="5_rsarq"]
+[ext_resource type="Texture2D" uid="uid://c1dsb2grbuppp" path="res://sprites/i.jpg" id="6_4tlkx"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="6_q1o4o"]
+[ext_resource type="PackedScene" uid="uid://e5bordi1dum1" path="res://scenes/Ратуша.tscn" id="7_18n8v"]
+[ext_resource type="PackedScene" uid="uid://c2ro6cv1fa7ki" path="res://scenes/NPS.tscn" id="8_4q25c"]
+[ext_resource type="Script" path="res://scripts/buildings.gd" id="8_fbkc7"]
+[ext_resource type="PackedScene" uid="uid://cfn2j2ilnuwyt" path="res://scenes/cave.tscn" id="9_nhuiu"]
+[ext_resource type="PackedScene" uid="uid://s8fn0emcx3yw" path="res://scenes/Enemies/BugEnemy.tscn" id="12_oq2op"]
+[ext_resource type="Script" path="res://scenes/MainHallScript.gd" id="13_7brmw"]
+[ext_resource type="PackedScene" uid="uid://0dun0xxj50at" path="res://scenes/portal.tscn" id="15_akfn7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ww4x7"]
+line_spacing = 5.0
+font_size = 40
+font_color = Color(0.906873, 0.758693, 0.172789, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_472bf"]
+font_size = 51
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wsikp"]
+distance = -24.0
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_gasiq")
+
+[node name="Node" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_sqhii")
+
+[node name="player" parent="." instance=ExtResource("1_18a8l")]
+position = Vector2(63, -10)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(1, 0)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+editor_draw_drag_margin = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="player/Camera2D"]
+
+[node name="Control" type="Control" parent="player/Camera2D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+theme = ExtResource("3_emiom")
+metadata/_edit_use_anchors_ = true
+
+[node name="BuildingList" type="ItemList" parent="player/Camera2D/CanvasLayer/Control"]
+modulate = Color(0.65098, 0.831373, 0.996078, 1)
+z_index = 10
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0119792
+anchor_top = 0.715573
+anchor_right = 0.244554
+anchor_bottom = 0.968577
+offset_top = -0.250031
+offset_right = -116.544
+grow_vertical = 0
+allow_rmb_select = true
+auto_height = true
+item_count = 1
+max_columns = 2
+same_column_width = true
+item_0/text = "Фабрика 100"
+item_0/icon = ExtResource("4_gjlm0")
+script = ExtResource("5_rsarq")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="player/Camera2D/CanvasLayer/Control"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.452
+anchor_right = 0.554
+anchor_bottom = 0.172
+offset_left = 0.160034
+offset_top = 36.0
+offset_right = 0.319946
+offset_bottom = -59.104
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="player/Camera2D/CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00510204
+anchor_top = 0.010989
+anchor_right = 0.984694
+anchor_bottom = 0.978022
+offset_left = 1.0
+offset_right = 4.0
+offset_bottom = 1.0
+scale = Vector2(0.996923, 1)
+text = "100
+"
+label_settings = SubResource("LabelSettings_ww4x7")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" type="Button" parent="player/Camera2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.931
+anchor_top = 0.003
+anchor_right = 1.0
+anchor_bottom = 0.069
+offset_left = 0.487915
+offset_top = 0.05
+offset_bottom = 0.149998
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "пауза"
+metadata/_edit_use_anchors_ = true
+
+[node name="pp" type="Panel" parent="player/Camera2D/CanvasLayer/Control"]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.214
+anchor_top = 0.288
+anchor_right = 0.687
+anchor_bottom = 0.714
+offset_left = 96.472
+offset_top = -11.2
+offset_right = 96.5759
+offset_bottom = -11.1
+
+[node name="Start" type="Button" parent="player/Camera2D/CanvasLayer/Control/pp"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.393
+anchor_top = 0.394
+anchor_right = 0.617
+anchor_bottom = 0.523
+offset_left = -0.184998
+offset_top = -0.138008
+offset_right = -0.265015
+offset_bottom = 0.128998
+grow_horizontal = 2
+grow_vertical = 2
+text = "Старт"
+
+[node name="Quit" type="Button" parent="player/Camera2D/CanvasLayer/Control/pp"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.393
+anchor_top = 0.394
+anchor_right = 0.617
+anchor_bottom = 0.523
+offset_left = -0.184998
+offset_top = 58.862
+offset_right = -0.265015
+offset_bottom = 59.129
+grow_horizontal = 2
+grow_vertical = 2
+text = "Выход
+"
+
+[node name="Timer" type="Panel" parent="player/Camera2D/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.129
+anchor_right = 0.574
+anchor_bottom = 0.21
+offset_left = -1.20001
+offset_top = 0.421997
+offset_right = 0.440063
+offset_bottom = 0.526016
+script = ExtResource("6_q1o4o")
+
+[node name="TimerLabel" type="Label" parent="player/Camera2D/CanvasLayer/Control/Timer"]
+modulate = Color(0.65098, 0.831373, 0.996078, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.47998
+offset_bottom = -0.746033
+grow_horizontal = 2
+grow_vertical = 2
+text = "0:00"
+label_settings = SubResource("LabelSettings_472bf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bounds" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounds"]
+position = Vector2(0, -24)
+shape = SubResource("WorldBoundaryShape2D_wsikp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2.38419e-07, 231)
+scale = Vector2(0.640278, 0.640278)
+texture = ExtResource("6_4tlkx")
+
+[node name="buildings" type="Node2D" parent="."]
+script = ExtResource("8_fbkc7")
+
+[node name="Ратуша" type="Node2D" parent="buildings"]
+
+[node name="Фабрика" type="Node2D" parent="buildings"]
+
+[node name="Building__" type="Node2D" parent="buildings"]
+
+[node name="npc" parent="." instance=ExtResource("8_4q25c")]
+position = Vector2(-101, -29)
+
+[node name="cave" parent="." instance=ExtResource("9_nhuiu")]
+position = Vector2(115, 0)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("12_oq2op")]
+position = Vector2(-300, 0)
+
+[node name="Hall" parent="." instance=ExtResource("7_18n8v")]
+scale = Vector2(1.92, 1.92)
+script = ExtResource("13_7brmw")
+
+[node name="portal" parent="." instance=ExtResource("15_akfn7")]
+position = Vector2(234, -1)
+
+[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/Pause" to="Node" method="_on_pause_pressed"]
+[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/pp/Start" to="Node" method="_on_start_pressed"]
+[connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/pp/Quit" to="Node" method="_on_quit_pressed"]
+[connection signal="hall_just_atacked" from="Hall" to="Hall" method="_on_hall_just_atacked"]

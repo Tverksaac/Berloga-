@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1tl76i7klgns"]
+
+[ext_resource type="Script" path="res://lvlmenu.gd" id="1_558en"]
+[ext_resource type="Texture2D" uid="uid://c1dsb2grbuppp" path="res://sprites/i.jpg" id="1_gcqdq"]
+
+[node name="Control" type="Control"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.317647)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_558en")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gcqdq")
+
+[node name="lvl1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 325.0
+offset_top = -109.0
+offset_right = 616.0
+offset_bottom = 149.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Level 1"
+
+[node name="lvl2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 766.0
+offset_top = -109.0
+offset_right = 1057.0
+offset_bottom = 149.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+disabled = true
+text = "Level 2"
+
+[node name="lvl3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1224.0
+offset_top = -109.0
+offset_right = 1515.0
+offset_bottom = 149.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+disabled = true
+text = "Level 3
+"
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -305.0
+offset_top = -323.0
+offset_right = 280.0
+offset_bottom = -246.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 70
+text = "EXIT"
+
+[connection signal="pressed" from="lvl1" to="." method="_on_lvl_1_pressed"]
+[connection signal="pressed" from="lvl2" to="." method="_on_lvl_2_pressed"]
+[connection signal="pressed" from="lvl3" to="." method="_on_lvl_3_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
