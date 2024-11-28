@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var GB = GlobalVariables
 var is_busy = false
-var fabric
+var electro
 var direction = 1
 
 func HandleAnims():
@@ -16,7 +16,7 @@ func HandleAnims():
 		$AnimatedSprite2D.pause()
 
 func IsFabricAvaliable():
-	if GB.free_fabrics.size() != 0:
+	if GB.free_electro.size() != 0:
 		return true
 	else:
 		return false
@@ -36,14 +36,14 @@ func WalkTo(pos):
 			return
 
 func GoToWork():
-	fabric = GB.free_fabrics[0]
-	GB.busy_fabrics.append(GB.free_fabrics[0])
-	GB.free_fabrics.remove_at(0)
-	GB.free_bears.erase(self)
-	GB.busy_bears.append(self)
+	electro = GB.free_electro[0]
+	GB.busy_electro.append(GB.free_electro[0])
+	GB.free_electro.remove_at(0)
+	GB.free_electro_bears.erase(self)
+	GB.busy_electro_bears.append(self)
 	is_busy = true
 	print("goint to work...")
-	WalkTo(fabric.position)
+	WalkTo(electro.position)
 
 func WalkAround():
 	velocity.x = direction * randi_range(50, 75)
@@ -58,15 +58,6 @@ func _ready() -> void:
 		
 func _process(delta: float) -> void:
 	if IsFabricAvaliable() and is_busy == false:
-		for fabric in GlobalVariables.free_fabrics:
-			if fabric.find_child("Сад"):
-				GoToWork()
-			elif fabric.find_child("Фабрика") and PlayerVariables.electro_income > 0:
-				GoToWork() 
-			else:
-				WalkAround()
-				
+		GoToWork()
 	if IsFabricAvaliable() == false and is_busy == false:
 		WalkAround()
-
-	

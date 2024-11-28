@@ -20,6 +20,13 @@ var busy_electro = []
 
 var clearlvl1 = false
 var clearlvl2 = false
+var Task_com1 = false
+var Task_com2 = false
+var Task_com3 = false
+var task1 = false
+var task2 = false
+var task3 = false
+
 
 func UnfreezeBear(type):
 	if PlayerVariables.honey < unfreeze_cost: return
@@ -40,15 +47,15 @@ func UnfreezeBear(type):
 		unfreeze_cost += 25
 		print("новая цена:" + str(unfreeze_cost))
 
-func _process(delta: float) -> void:
+func _process(_delta):
 	PlayerVariables.income = 0
 	PlayerVariables.electro_income = busy_electro.size() * 10
 	for fabric in GlobalVariables.busy_fabrics:
 		if fabric.find_child("Сад"):
 			PlayerVariables.income += 5
 		elif fabric.find_child("Фабрика"):
-			if PlayerVariables.electro_income >= 10:
-				PlayerVariables.electro_income -= 10
+			if PlayerVariables.electro_income >= 5:
+				PlayerVariables.electro_income -= 5
 				PlayerVariables.income += 10
 
 

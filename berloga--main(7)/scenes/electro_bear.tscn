@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://r215yeqfumhs"]
 
-[ext_resource type="Script" path="res://electro_bear.gd" id="1_0ixmh"]
+[ext_resource type="Script" path="res://scripts/electro_bear.gd" id="1_0ixmh"]
 [ext_resource type="Texture2D" uid="uid://dfr2iflvs0usg" path="res://sprites/idle.png" id="2_1iydr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qabba"]
