@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1tl76i7klgns"]
+
+[ext_resource type="Script" path="res://scripts/lvlmenu.gd" id="1_558en"]
+[ext_resource type="Texture2D" uid="uid://c1dsb2grbuppp" path="res://sprites/i.jpg" id="1_gcqdq"]
+
+[node name="Control" type="Control"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.317647)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_558en")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gcqdq")
+
+[node name="lvl1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.169
+anchor_top = 0.399
+anchor_right = 0.321
+anchor_bottom = 0.638
+offset_left = 0.519958
+offset_top = 0.0799866
+offset_right = -0.320007
+offset_bottom = -0.0400391
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Level 1"
+
+[node name="lvl2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.399
+anchor_top = 0.399
+anchor_right = 0.551
+anchor_bottom = 0.638
+offset_left = -0.0800171
+offset_top = 0.0799866
+offset_right = -0.920044
+offset_bottom = -0.0400391
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+disabled = true
+text = "Level 2"
+
+[node name="lvl3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.637
+anchor_top = 0.399
+anchor_right = 0.789
+anchor_bottom = 0.638
+offset_left = 0.959961
+offset_top = 0.0799866
+offset_right = 0.119873
+offset_bottom = -0.0400391
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+disabled = true
+text = "Level 3
+"
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.341
+anchor_top = 0.676
+anchor_right = 0.646
+anchor_bottom = 0.772
+offset_left = 0.279968
+offset_top = 26.9199
+offset_right = -0.320068
+offset_bottom = 0.23999
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 70
+text = "EXIT"
+
+[connection signal="pressed" from="lvl1" to="." method="_on_lvl_1_pressed"]
+[connection signal="pressed" from="lvl2" to="." method="_on_lvl_2_pressed"]
+[connection signal="pressed" from="lvl3" to="." method="_on_lvl_3_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
