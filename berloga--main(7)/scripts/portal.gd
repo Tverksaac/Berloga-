@@ -10,7 +10,7 @@ func _process(_delta: float) -> void:
 	else:
 		$Label.hide()	
 	if Input.is_action_just_pressed("ui_choise") and flag == true:
-		if  PlayerVariables.honey >= 0 and len(GlobalVariables.busy_fabrics) >= 0:
+		if  GlobalVariables.Task_com1 == true:
 			get_tree().change_scene_to_file("res://scenes/main2.tscn")
 			level_changed.emit()
 			GlobalVariables.clearlvl1 = true
@@ -36,6 +36,6 @@ func _on_body_exited(body: Node2D) -> void:
 		flag = false
 
 func _on_level_changed() -> void:
-	PlayerVariables.ChangeMoneyTo(200)
+	PlayerVariables.ChangeMoneyTo(1000)
 	for bear in GlobalVariables.bears:
 		bear.queue_free()

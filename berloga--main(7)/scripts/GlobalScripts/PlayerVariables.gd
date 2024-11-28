@@ -1,6 +1,6 @@
 extends Node
 
-var honey = 100000
+var honey = 1000
 var income = 0
 var is_income = true
 var income_modifer = 1
@@ -16,6 +16,8 @@ func ChangeMoney(value):
 	
 func UpdateMoney(node):
 	node.text = str(honey)
+func UpdateEnergy(node):
+	node.text = str(electro_income)
 
 func ChangeMoneyTo(value):
 	honey = value
