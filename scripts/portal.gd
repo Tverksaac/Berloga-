@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 			get_tree().change_scene_to_file("res://scenes/main2.tscn")
 			level_changed.emit()
 			GlobalVariables.clearlvl1 = true
-			if PlayerVariables.honey >= 600 and len(GlobalVariables.busy_fabrics) >= 3:
+			if PlayerVariables.honey >= 600 and len(GlobalVariables.free_fabrics) >= 3:
 				GlobalVariables.clearlvl2 = true
 				
 				
@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 				
 			
 	if Input.is_action_just_pressed("ui_choise") and flag == true:
-		if PlayerVariables.honey >= 600 and GlobalVariables.clearlvl2 == true and len(GlobalVariables.busy_fabrics) >= 3:
+		if PlayerVariables.honey >= 600 and GlobalVariables.clearlvl2 == true and len(GlobalVariables.free_fabrics) >= 3:
 			get_tree().change_scene_to_file("res://scenes/main3.tscn")
 			level_changed.emit()
 		
@@ -37,10 +37,4 @@ func _on_body_exited(body: Node2D) -> void:
 		flag = false
 
 func _on_level_changed() -> void:
-	for bear in GlobalVariables.bears:
-		bear.queue_free()
-	PlayerVariables.ChangeMoneyTo(1000)
-	GlobalVariables.ClearArrays()
-	GlobalVariables.task1 = false
-	GlobalVariables.task2 = false
-	GlobalVariables.task3 = false
+	GlobalVariables.ResetGame(1000)

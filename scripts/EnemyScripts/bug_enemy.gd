@@ -51,6 +51,9 @@ func TakeDamage():
 
 
 func _ready() -> void:
+	if get_tree():
+		reparent(get_parent().get_parent())
+	print(get_parent())
 	await WalkTo(Vector2(0,0))
 	Atack()
 

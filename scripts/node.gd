@@ -33,6 +33,9 @@ func _on_pause_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	pause_b = false
+	
+	GlobalVariables.ResetGame(1000)
+	
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	
 	

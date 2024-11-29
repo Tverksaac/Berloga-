@@ -93,12 +93,12 @@ func _process(_delta: float) -> void:
 	PlayerVariables.UpdateMoney(label)
 	PlayerVariables.UpdateEnergy(label_en)
 	PlayerVariables.UpdateMoney(test1)
-	test2.text = str(len(GlobalVariables.busy_fabrics))
+	test2.text = str(len(GlobalVariables.free_fabrics) + len(GlobalVariables.busy_fabrics))
 	test3.text = str(len(GlobalVariables.bears) + len(GlobalVariables.electro_bears))
 	if  PlayerVariables.honey >= int(test_is1.text):
 		$player/Camera2D/CanvasLayer/Control/Tasks/VBoxContainer/n1.hide()
 		GlobalVariables.task1 = true
-	if len(GlobalVariables.busy_fabrics) == int(test_is2.text):
+	if len(GlobalVariables.free_fabrics) + len(GlobalVariables.busy_fabrics) == int(test_is2.text):
 		$player/Camera2D/CanvasLayer/Control/Tasks/VBoxContainer/n2.hide()
 		GlobalVariables.task2 = true
 	if len(GlobalVariables.bears) + len(GlobalVariables.electro_bears) == int(test_is3.text):

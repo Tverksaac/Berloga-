@@ -33,7 +33,7 @@ sprite_frames = SubResource("SpriteFrames_0lvfm")
 [node name="atackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="atackArea"]
-position = Vector2(0, -6)
+position = Vector2(-1, -7)
 shape = SubResource("CircleShape2D_f0jj6")
 
 [connection signal="input_event" from="atackArea" to="." method="_on_atack_area_input_event"]

@@ -28,6 +28,8 @@ var task2 = false
 var task3 = false
 
 func ClearArrays():
+	for cur_bear in bears:
+		cur_bear.queue_free()
 	bears = []
 	busy_bears = []
 	free_bears = []
@@ -42,7 +44,16 @@ func ClearArrays():
 	
 	free_electro = []
 	busy_electro = []
-
+	
+func ResetGame(money):
+	for bear in GlobalVariables.bears:
+		bear.queue_free()
+	PlayerVariables.ChangeMoneyTo(money)
+	GlobalVariables.ClearArrays()
+	GlobalVariables.task1 = false
+	GlobalVariables.task2 = false
+	GlobalVariables.task3 = false
+	
 func UnfreezeBear(type):
 	if PlayerVariables.honey < unfreeze_cost: return
 	
