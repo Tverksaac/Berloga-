@@ -16,21 +16,23 @@ func HandleAnims():
 		$AnimatedSprite2D.pause()
 
 func IsFabricAvaliable():
-	if GB.free_fabrics.size() == 0:
-		return false
 	for found_fabric in GB.free_fabrics:
 		if found_fabric.find_child("Сад"):
 			return true
 		elif found_fabric.find_child("Фабрика") and PlayerVariables.electro_income >= 5:
 			return true
 		else:
-			return false
+			continue
+		if GB.free_fabrics.size() == 0:
+			continue
+	return false
+
 
 func IsWorking():
-	if GB.busy_bears.find(self):
-		return true
-	else:
+	if GB.busy_bears.find(self) == -1:
 		return false
+	else:
+		return true
 
 func WalkTo(pos):
 	var dir_to_walk
@@ -54,10 +56,8 @@ func GoToWork(fabric_name):
 			break
 	GB.free_fabrics.remove_at(GB.free_fabrics.find(fabric))
 	GB.busy_fabrics.append(fabric)
-	is_busy = true
 	GB.free_bears.erase(self)
 	GB.busy_bears.append(self)
-	print("goint to work...")
 	WalkTo(fabric.position)
 
 func WalkAround():
@@ -72,19 +72,23 @@ func _ready() -> void:
 		direction = randi_range(-1, 1)
 		
 func _process(delta: float) -> void:
-	if IsFabricAvaliable() and not is_busy:
-		var memory = []
+	var memory = []
+	if IsFabricAvaliable() == true and IsWorking() == false:
+		
+		
+				
 		for current_fabric in GlobalVariables.free_fabrics:
+
 			if self in memory:
 				continue
-			else:
-				memory.append(self)
-
+			
+			print(current_fabric)
 			if current_fabric.find_child("Сад"):
-				print("НАШЁЛ САД")
 				GoToWork("Сад")
-			if current_fabric.find_child("Фабрика") and PlayerVariables.electro_income >= 5:
+				memory.append(self)
+			elif current_fabric.find_child("Фабрика") and PlayerVariables.electro_income >= 5:
 				GoToWork("Фабрика")
+				memory.append(self)
 				
-	if IsFabricAvaliable() == false and is_busy == false:
+	if IsFabricAvaliable() == false and IsWorking() == false:
 		WalkAround()

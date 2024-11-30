@@ -44,7 +44,12 @@ func ClearArrays():
 	
 	free_electro = []
 	busy_electro = []
-	
+
+func StopTime():
+	Engine.time_scale = 0
+func ResumeTime():
+	Engine.time_scale = 1
+
 func ResetGame(money):
 	for bear in GlobalVariables.bears:
 		bear.queue_free()
@@ -85,6 +90,4 @@ func _process(_delta):
 				if PlayerVariables.electro_income >= 5:
 					PlayerVariables.electro_income -= 5
 					PlayerVariables.income += 50
-
-
-	
+					
