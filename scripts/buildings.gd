@@ -11,5 +11,5 @@ var income : int = 0
 func _ready():
 	
 	while PlayerVariables.is_income:
-		await get_tree().create_timer(0.1).timeout
-		PlayerVariables.ChangeMoney(PlayerVariables.income * PlayerVariables.income_modifer / 10)
+		await get_tree().create_timer(1).timeout
+		PlayerVariables.ChangeMoney(int(PlayerVariables.income * PlayerVariables.income_modifer))
