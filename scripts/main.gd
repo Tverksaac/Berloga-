@@ -93,20 +93,27 @@ func _process(_delta: float) -> void:
 	PlayerVariables.UpdateMoney(label)
 	PlayerVariables.UpdateEnergy(label_en)
 	PlayerVariables.UpdateMoney(test1)
-	test2.text = str(len(GlobalVariables.free_fabrics) + len(GlobalVariables.busy_fabrics))
-	test3.text = str(len(GlobalVariables.bears) + len(GlobalVariables.electro_bears))
+	test2.text = str(len(GlobalVariables.busy_fabrics) + len(GlobalVariables.busy_electro))
+	test3.text = str(len(GlobalVariables.busy_bears) + len(GlobalVariables.busy_electro_bears))
 	if  PlayerVariables.honey >= int(test_is1.text):
 		$player/Camera2D/CanvasLayer/Control/Tasks/VBoxContainer/n1.hide()
 		GlobalVariables.task1 = true
-	if len(GlobalVariables.free_fabrics) + len(GlobalVariables.busy_fabrics) == int(test_is2.text):
+	if  PlayerVariables.honey <= int(test_is1.text):
+		$player/Camera2D/CanvasLayer/Control/Tasks/VBoxContainer/n1.show()
+		GlobalVariables.task1 = false
+	if len(GlobalVariables.busy_electro) + len(GlobalVariables.busy_fabrics) == int(test_is2.text):
 		$player/Camera2D/CanvasLayer/Control/Tasks/VBoxContainer/n2.hide()
 		GlobalVariables.task2 = true
-	if len(GlobalVariables.bears) + len(GlobalVariables.electro_bears) == int(test_is3.text):
+	if len(GlobalVariables.busy_bears) + len(GlobalVariables.busy_electro_bears) == int(test_is3.text):
 		$player/Camera2D/CanvasLayer/Control/Tasks/VBoxContainer/n3.hide()
 		GlobalVariables.task3 = true
 	if GlobalVariables.task1 and GlobalVariables.task2 and GlobalVariables.task3:
-		GlobalVariables.Task_com1 = true
+		GlobalVariables.Task_com = !GlobalVariables.Task_com
 		$player/Camera2D/CanvasLayer/Control/Tasks/Label.show()
+	else:
+		$player/Camera2D/CanvasLayer/Control/Tasks/Label.hide()
+		GlobalVariables.Task_com = false
+		
 	
 	
 	if placing_building and current_building:
