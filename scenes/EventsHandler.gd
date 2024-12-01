@@ -7,6 +7,8 @@ extends ColorRect
 @onready var speeker_name: Label = $SpeekerName
 @onready var choose_button_1: Button = $Choose1
 @onready var choose_button_2: Button = $Choose2
+@onready var inf1: Label = $Choose1/INF1
+@onready var inf2: Label = $Choose2/INF2
 
 @onready var timer_label: Label = $"../Timer/TimerLabel"
 
@@ -15,6 +17,8 @@ var GV = GlobalVariables
 
 var current_event
 var memory
+
+var paus = false
 
 func EndEvent():
 	main_body.hide()
@@ -82,19 +86,31 @@ func TestEventCall1():
 	print("Ивент сработал!! 1")
 func TestEventCall2():
 	print("Ивент сработал!! 2")
+			
 
+func _on_choose_1_pressed() -> void:
+	current_event.event.callback_1.call()
+	GV.paus = false
+	EndEvent()
+
+
+func _on_choose_2_pressed() -> void:
+	current_event.event.callback_2.call()
+	GV.paus = false
+	EndEvent()
+	
+	
 func _ready() -> void:
 	while true:
 		await get_tree().create_timer(1).timeout
 		var seconds = int(GetTime()[1])
 		var minutes = int(GetTime()[0])
-		
-		if seconds == 00 or seconds == 10 or seconds == 20:
+		if (seconds == 00 or seconds == 10):
 			print("Щас ивент будет!")
 			memory = []
 			current_event = ChooseEvent()
 			main_body.show()
-			GV.StopTime()
+			GV.paus = true
 			print("TIME SCALED TO 0")
 			choose_button_1.text = current_event.event.choose_1
 			choose_button_2.text = current_event.event.choose_2
@@ -102,11 +118,16 @@ func _ready() -> void:
 			speeker_name.text = current_event.speeker.name
 			
 
-func _on_choose_1_pressed() -> void:
-	current_event.event.callback_1.call()
-	EndEvent()
+
+func _on_choose_1_mouse_entered() -> void:
+	inf1.show()
+
+func _on_choose_1_mouse_exited() -> void:
+	inf1.hide()
+
+func _on_choose_2_mouse_entered() -> void:
+	inf2.show()
 
 
-func _on_choose_2_pressed() -> void:
-	current_event.event.callback_2.call()
-	EndEvent()
+func _on_choose_2_mouse_exited() -> void:
+	inf2.hide()
