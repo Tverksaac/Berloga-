@@ -18,14 +18,13 @@ var busy_fabrics = []
 var free_electro = []
 var busy_electro = []
 
-var clearlvl1 = false
-var clearlvl2 = false
-var Task_com1 = false
-var Task_com2 = false
-var Task_com3 = false
+var counter_scene = 1
+var Task_com = false
 var task1 = false
 var task2 = false
 var task3 = false
+
+var paus
 
 func ClearArrays():
 	for cur_bear in bears:
@@ -47,6 +46,7 @@ func ClearArrays():
 
 func StopTime():
 	Engine.time_scale = 0
+	
 func ResumeTime():
 	Engine.time_scale = 1
 
