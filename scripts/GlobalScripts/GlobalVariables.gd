@@ -80,14 +80,16 @@ func UnfreezeBear(type):
 
 func _process(_delta):
 	var memory = []
-	PlayerVariables.income = 0
+	var garden_income = 0
+	var fabric_income = 0
 	PlayerVariables.electro_income = busy_electro.size() * 10
 	if get_tree():
 		for fabric in GlobalVariables.busy_fabrics:
 			if fabric.find_child("Сад"):
-				PlayerVariables.income += 10
+				garden_income += 10
 			elif fabric.find_child("Фабрика"):
 				if PlayerVariables.electro_income >= 5:
 					PlayerVariables.electro_income -= 5
-					PlayerVariables.income += 50
+					fabric_income += 50
+		PlayerVariables.income = fabric_income + garden_income
 					

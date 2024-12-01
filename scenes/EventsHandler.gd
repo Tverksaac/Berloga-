@@ -56,6 +56,8 @@ var EVENTS_LIST = {
 			event_name = "Медвежий бунт",
 			choose_1 = "Помиловать!",
 			choose_2 = "Казнить!",
+			result_1 = "-75 мёда/сек, 1.2 множитель производства",
+			result_2 = "-200 мёда",
 			callback_1 = TestEventCall1,
 			callback_2 = TestEventCall2,
 			condition = TestEventCond
@@ -65,19 +67,19 @@ var EVENTS_LIST = {
 func ChooseEvent():
 	var event_num = randi_range(0, EVENTS_LIST.size() - 1)
 	var choosen_event : Dictionary = EVENTS_LIST["event" + str(event_num)]
-	if choosen_event in memory:
+	if EVENTS_LIST.size() == len(memory):
+		return false
+	elif choosen_event in memory:
 		ChooseEvent()
-		return
 	else:
 		memory.append(choosen_event)
-	print(choosen_event)
 	if choosen_event.event.condition.call():
 		return choosen_event
 	else:
 		ChooseEvent()
 
 func TestEventCond():
-	if PV.honey >= 100:
+	if PV.income >= 80:
 		return true
 	else:
 		return false
@@ -105,18 +107,21 @@ func _ready() -> void:
 		await get_tree().create_timer(1).timeout
 		var seconds = int(GetTime()[1])
 		var minutes = int(GetTime()[0])
-		if (seconds == 00 or seconds == 10):
+		if seconds == 00 or seconds == 10:
 			print("Щас ивент будет!")
 			memory = []
 			current_event = ChooseEvent()
-			main_body.show()
-			GV.paus = true
-			print("TIME SCALED TO 0")
-			choose_button_1.text = current_event.event.choose_1
-			choose_button_2.text = current_event.event.choose_2
-			dialog_label.text = current_event.speeker.text
-			speeker_name.text = current_event.speeker.name
-			
+			if current_event:
+				main_body.show()
+				GV.paus = true
+				print("TIME SCALED TO 0")
+				choose_button_1.text = current_event.event.choose_1
+				choose_button_2.text = current_event.event.choose_2
+				dialog_label.text = current_event.speeker.text
+				speeker_name.text = current_event.speeker.name
+				inf1.text = current_event.event.result_1
+				inf2.text = current_event.event.result_2
+
 
 
 func _on_choose_1_mouse_entered() -> void:
@@ -127,7 +132,6 @@ func _on_choose_1_mouse_exited() -> void:
 
 func _on_choose_2_mouse_entered() -> void:
 	inf2.show()
-
 
 func _on_choose_2_mouse_exited() -> void:
 	inf2.hide()
