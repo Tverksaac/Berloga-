@@ -1,24 +1,23 @@
-[gd_scene load_steps=36 format=3 uid="uid://gglvhq7syp0a"]
+[gd_scene load_steps=35 format=3 uid="uid://c0y3em0w7nvsw"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_3vsqp"]
-[ext_resource type="Script" path="res://scripts/node.gd" id="2_bj4k4"]
-[ext_resource type="PackedScene" uid="uid://0rq7sw7xpy3h" path="res://scenes/Player.tscn" id="3_bb5x6"]
-[ext_resource type="Theme" uid="uid://bc8eb3qygobtp" path="res://MainTheme.tres" id="4_5qirv"]
-[ext_resource type="Texture2D" uid="uid://cms25lwtpvoi5" path="res://sprites/BuildingsPNG/HoneyB.png" id="5_yb1w3"]
-[ext_resource type="Texture2D" uid="uid://dcq3wnrhly4kl" path="res://sprites/BuildingsPNG/HoneyGarden.png" id="6_qyb7b"]
-[ext_resource type="Texture2D" uid="uid://8l313tclexx0" path="res://sprites/BuildingsPNG/Electro.png" id="7_bifgx"]
-[ext_resource type="Script" path="res://scripts/building_list.gd" id="8_outt3"]
-[ext_resource type="Script" path="res://scripts/timer.gd" id="9_im8qu"]
-[ext_resource type="Script" path="res://scripts/EventsHandler.gd" id="10_kwpy2"]
-[ext_resource type="Texture2D" uid="uid://c1dsb2grbuppp" path="res://sprites/i.jpg" id="11_7xg62"]
-[ext_resource type="Script" path="res://scripts/buildings.gd" id="12_vtnxh"]
-[ext_resource type="PackedScene" uid="uid://c2ro6cv1fa7ki" path="res://scenes/NPS.tscn" id="13_1vbye"]
-[ext_resource type="PackedScene" uid="uid://cfn2j2ilnuwyt" path="res://scenes/cave.tscn" id="14_hbrc6"]
-[ext_resource type="PackedScene" uid="uid://s8fn0emcx3yw" path="res://scenes/Enemies/BugEnemy.tscn" id="15_m2vqm"]
-[ext_resource type="PackedScene" uid="uid://e5bordi1dum1" path="res://scenes/Ратуша.tscn" id="16_ycfli"]
-[ext_resource type="Script" path="res://sprites/MainHallScript.gd" id="17_hhem3"]
-[ext_resource type="PackedScene" uid="uid://0dun0xxj50at" path="res://scenes/portal.tscn" id="18_r47cm"]
-[ext_resource type="PackedScene" uid="uid://u1iylm5m6vvb" path="res://scenes/bear.tscn" id="19_scg1u"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_1jl8j"]
+[ext_resource type="Script" path="res://scripts/node.gd" id="2_ygkr0"]
+[ext_resource type="PackedScene" uid="uid://0rq7sw7xpy3h" path="res://scenes/Player.tscn" id="3_3p7cl"]
+[ext_resource type="Theme" uid="uid://bc8eb3qygobtp" path="res://MainTheme.tres" id="4_iubig"]
+[ext_resource type="Texture2D" uid="uid://cms25lwtpvoi5" path="res://sprites/BuildingsPNG/HoneyB.png" id="5_0ko4y"]
+[ext_resource type="Texture2D" uid="uid://dcq3wnrhly4kl" path="res://sprites/BuildingsPNG/HoneyGarden.png" id="6_r8rta"]
+[ext_resource type="Texture2D" uid="uid://8l313tclexx0" path="res://sprites/BuildingsPNG/Electro.png" id="7_5bsb7"]
+[ext_resource type="Script" path="res://scripts/building_list.gd" id="8_kh6yt"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="9_wiblt"]
+[ext_resource type="Script" path="res://scenes/EventsHandler.gd" id="10_oo5v4"]
+[ext_resource type="Texture2D" uid="uid://c1dsb2grbuppp" path="res://sprites/i.jpg" id="11_dsunl"]
+[ext_resource type="Script" path="res://scripts/buildings.gd" id="12_4xndj"]
+[ext_resource type="PackedScene" uid="uid://c2ro6cv1fa7ki" path="res://scenes/NPS.tscn" id="13_h2lki"]
+[ext_resource type="PackedScene" uid="uid://cfn2j2ilnuwyt" path="res://scenes/cave.tscn" id="14_hux8g"]
+[ext_resource type="PackedScene" uid="uid://s8fn0emcx3yw" path="res://scenes/Enemies/BugEnemy.tscn" id="15_lgdhs"]
+[ext_resource type="PackedScene" uid="uid://e5bordi1dum1" path="res://scenes/Ратуша.tscn" id="16_vtfyc"]
+[ext_resource type="PackedScene" uid="uid://0dun0xxj50at" path="res://scenes/portal.tscn" id="17_6s75d"]
+[ext_resource type="PackedScene" uid="uid://u1iylm5m6vvb" path="res://scenes/bear.tscn" id="18_2t4g2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_88uqf"]
 line_spacing = 12.0
@@ -82,13 +81,13 @@ Button/colors/font_pressed_color = Color(1.92523e-06, 0.612009, 0.637978, 1)
 distance = -24.0
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_3vsqp")
+script = ExtResource("1_1jl8j")
 
 [node name="Node" type="Node" parent="."]
 process_mode = 3
-script = ExtResource("2_bj4k4")
+script = ExtResource("2_ygkr0")
 
-[node name="player" parent="." instance=ExtResource("3_bb5x6")]
+[node name="player" parent="." instance=ExtResource("3_3p7cl")]
 position = Vector2(63, -10)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -113,7 +112,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_filter = 2
-theme = ExtResource("4_5qirv")
+theme = ExtResource("4_iubig")
 metadata/_edit_use_anchors_ = true
 
 [node name="BuildingList" type="ItemList" parent="player/Camera2D/CanvasLayer/Control"]
@@ -134,12 +133,12 @@ item_count = 3
 max_columns = 2
 same_column_width = true
 item_0/text = "Фабрика 100"
-item_0/icon = ExtResource("5_yb1w3")
+item_0/icon = ExtResource("5_0ko4y")
 item_1/text = "Сад 50"
-item_1/icon = ExtResource("6_qyb7b")
+item_1/icon = ExtResource("6_r8rta")
 item_2/text = "Электростанция 175"
-item_2/icon = ExtResource("7_bifgx")
-script = ExtResource("8_outt3")
+item_2/icon = ExtResource("7_5bsb7")
+script = ExtResource("8_kh6yt")
 metadata/_edit_use_anchors_ = true
 
 [node name="PAN_ELEC" type="Panel" parent="player/Camera2D/CanvasLayer/Control"]
@@ -271,7 +270,7 @@ offset_left = -20.2
 offset_top = 28.422
 offset_right = -18.5599
 offset_bottom = 28.526
-script = ExtResource("9_im8qu")
+script = ExtResource("9_wiblt")
 
 [node name="TimerLabel" type="Label" parent="player/Camera2D/CanvasLayer/Control/Timer"]
 modulate = Color(0.65098, 0.831373, 0.996078, 1)
@@ -457,7 +456,7 @@ offset_top = 286.0
 offset_right = 1364.0
 offset_bottom = 986.0
 color = Color(0.0450308, 0.19239, 0.265681, 1)
-script = ExtResource("10_kwpy2")
+script = ExtResource("10_oo5v4")
 
 [node name="TextBody" type="ColorRect" parent="player/Camera2D/CanvasLayer/Control/MainBody"]
 layout_mode = 1
@@ -596,10 +595,10 @@ shape = SubResource("WorldBoundaryShape2D_wsikp")
 visible = false
 position = Vector2(2.38419e-07, 231)
 scale = Vector2(0.640278, 0.640278)
-texture = ExtResource("11_7xg62")
+texture = ExtResource("11_dsunl")
 
 [node name="buildings" type="Node2D" parent="."]
-script = ExtResource("12_vtnxh")
+script = ExtResource("12_4xndj")
 
 [node name="Ратуша" type="Node2D" parent="buildings"]
 
@@ -611,23 +610,22 @@ script = ExtResource("12_vtnxh")
 
 [node name="Электростанция" type="Node2D" parent="buildings"]
 
-[node name="npc" parent="." instance=ExtResource("13_1vbye")]
+[node name="npc" parent="." instance=ExtResource("13_h2lki")]
 position = Vector2(-101, -29)
 
-[node name="cave" parent="." instance=ExtResource("14_hbrc6")]
+[node name="cave" parent="." instance=ExtResource("14_hux8g")]
 position = Vector2(115, 0)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("15_m2vqm")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("15_lgdhs")]
 position = Vector2(-300, 0)
 
-[node name="Hall" parent="." instance=ExtResource("16_ycfli")]
+[node name="Hall" parent="." instance=ExtResource("16_vtfyc")]
 scale = Vector2(1.92, 1.92)
-script = ExtResource("17_hhem3")
 
-[node name="portal" parent="." instance=ExtResource("18_r47cm")]
+[node name="portal" parent="." instance=ExtResource("17_6s75d")]
 position = Vector2(234, -1)
 
-[node name="WorkerBear" parent="." instance=ExtResource("19_scg1u")]
+[node name="WorkerBear" parent="." instance=ExtResource("18_2t4g2")]
 position = Vector2(-172, 0)
 
 [connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/Pause" to="Node" method="_on_pause_pressed"]
@@ -639,4 +637,3 @@ position = Vector2(-172, 0)
 [connection signal="mouse_entered" from="player/Camera2D/CanvasLayer/Control/MainBody/Choose2" to="player/Camera2D/CanvasLayer/Control/MainBody" method="_on_choose_2_mouse_entered"]
 [connection signal="mouse_exited" from="player/Camera2D/CanvasLayer/Control/MainBody/Choose2" to="player/Camera2D/CanvasLayer/Control/MainBody" method="_on_choose_2_mouse_exited"]
 [connection signal="pressed" from="player/Camera2D/CanvasLayer/Control/MainBody/Choose2" to="player/Camera2D/CanvasLayer/Control/MainBody" method="_on_choose_2_pressed"]
-[connection signal="hall_just_atacked" from="Hall" to="Hall" method="_on_hall_just_atacked"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://5kewf61md5p2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cgfej"]
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 10, 0)
+scale_min = 2.0
+scale_max = 5.0
+color = Color(0.938025, 0.950358, 0.373807, 1)
+turbulence_enabled = true
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+position = Vector2(0, -1)
+scale = Vector2(0.435133, 0.435133)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_cgfej")
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+trail_lifetime = 0.21
+trail_sections = 4

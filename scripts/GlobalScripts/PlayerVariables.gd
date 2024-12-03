@@ -2,6 +2,7 @@ extends Node
 
 var honey = 1000000
 var income = 0
+var lose = 0
 var is_income = true
 var income_modifer = 1
 

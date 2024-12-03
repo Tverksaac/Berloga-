@@ -11,6 +11,7 @@ var free_electro_bears : Array = []
 
 
 var unfreeze_cost = 50
+var energy_from_fabric = 10
 
 var free_fabrics = []
 var busy_fabrics = []
@@ -43,6 +44,8 @@ func ClearArrays():
 	
 	free_electro = []
 	busy_electro = []
+	
+	PlayerVariables.lose = 0
 
 func StopTime():
 	Engine.time_scale = 0
@@ -82,7 +85,7 @@ func _process(_delta):
 	var memory = []
 	var garden_income = 0
 	var fabric_income = 0
-	PlayerVariables.electro_income = busy_electro.size() * 10
+	PlayerVariables.electro_income = busy_electro.size() * energy_from_fabric
 	if get_tree():
 		for fabric in GlobalVariables.busy_fabrics:
 			if fabric.find_child("Сад"):
@@ -91,5 +94,4 @@ func _process(_delta):
 				if PlayerVariables.electro_income >= 5:
 					PlayerVariables.electro_income -= 5
 					fabric_income += 50
-		PlayerVariables.income = fabric_income + garden_income
-					
+		PlayerVariables.income = fabric_income + garden_income - PlayerVariables.lose

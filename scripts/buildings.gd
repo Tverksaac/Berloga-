@@ -12,4 +12,5 @@ func _ready():
 	
 	while PlayerVariables.is_income:
 		await get_tree().create_timer(1).timeout
+		print(PlayerVariables.income * PlayerVariables.income_modifer)
 		PlayerVariables.ChangeMoney(int(PlayerVariables.income * PlayerVariables.income_modifer))

@@ -34,6 +34,7 @@ func _on_atack_area_input_event(viewport: Node, event: InputEvent, shape_idx: in
 		TakeDamage()
 	
 func TakeDamage():
+	
 	var Clicked_tween = get_tree().create_tween()
 	var Returning_tween = get_tree().create_tween()
 	Clicked_tween.tween_property(animated_sprite_2d, "global_scale", Vector2(5, 5), 0.2)
@@ -44,6 +45,7 @@ func TakeDamage():
 	
 	health -= PlayerVariables.click_power
 	if health <= 0 :
+		PlayerVariables.honey += 50
 		queue_free()
 
 
